@@ -1,0 +1,132 @@
+Design a DCT-based image coding system that is capable of handling 24 bits/pixel color images and 8 bits/pixel black and white (B&W, also called gray) images, all with a size of 512×512 pixels. The system should operate using: a) 3 bits/pixel, b)1 bit/pixel or c) 0.25 bit/pixel. For the three cases, provide the average peak SNR(PSNR), i. e., the SNR when assuming the “signal” in the numerator is an image with all pixels at the peak value of 255 and the denominator is the mean squared-error. The test sequence should be the colorful and B&W versions of the images Lenna, Peppers,Baboon, Splash and Tiffany, available from [url2us2]. Do not download B&W versions of the five mentioned images, but make the conversion from color to B&W yourself and describe the conversion method you used. Hence, the test set will have 5 images. You can use as many images you want to compose your training set (distinct from the testset images). Provide the source code and a short report of your results that includes the average PSNR.
+	
+
+Dados:
+
+Projete um DCT-based image coding system
+
+24 bits/pixel -> for color image
+
+8 bits/pixel -> for black and white (gray images - B&W)
+
+
+Size: 512x512 pixels
+N=512 => 512 point DCT
+
+a) O sistema deve operar usando 3bits/pixel
+
+b) O sistema deve operar usando 1 bit/pixel
+
+c) O sistema deve operar usando 0.25 bit/pixel
+
+
+Para os 3 encontre: average peak SNR (PSNR)
+
+
+SOLUÇÃO:
+
+24 bits por cor representa 8 bits por cada cor
+
+DCT Based é uma DCT baseline
+
+BPP - Bit Per Pixel
+
+bpp= 24bits quer dizer que do RGB o R, G e B usam 8bits cada (8 bits por canal)
+
+CR = bpp(original)/bpp(comprimido)
+
+N(pix) -> Números de pixel
+
+S(comp) -> tamanho da imagem comprimida
+
+S(orgininal) = bpp * N(pix)
+S(comprimido) = bpp * N(pix)
+
+
+EXPLICAÇÃO:
+
+DCT - Discrete Cosine Transform é uma técnica
+
+1) Utilizado para compressão de imagem
+2) É o padrão do JPEG
+3) É uma transformada ortogonal com um conjunto de funções basis
+4) É usado para mapear um espaço de imagem em frequência
+5) Tem os seguintes elementos para análise de performance
+
+CR - Compression Ratio CR = N1/N2
+MSE - Mean Square Error - Medida de distorção da imagem reconstruida
+PSNR - Medição de qualidade da imagem reconstruída
+
+Vantagens:
+
+1) Empacota energia em frequências mais baixas
+
+Sobre JPEG
+
+JPEG tem vários modos:
+
+1) Baseline (Mais comum para DCT)
+2) Lossless
+3) Progressive
+4) Hierarchcal
+ 
+ Compressão de JPEG -> Reduz o tamanho do arquivo eliminando informação menos necessária
+ 
+ É uma técnica de "lossy", porque imagem final e imagem original não são as mesmas
+ 
+ 
+ Processo do JPEG
+ 
+ 1) A imagem original é dividida em blocos 8x8
+ 2) Os pixels de uma imagem Black and White vão de 0-255, mas os pixels de um bloco vão de -128 a 127
+ 3) DCT funciona da esquerda pra direita e cima baixo
+ 4) Cada bloco é comprimido por quantização
+ 5) Imagem comprimida é reconstruída através do processo inverso
+ 
+ 
+ Coordenada YUV
+ 
+ Y - Luminancia
+ Cb (matriz) e Cr (saturação) -  Crominancia
+ 
+RGB mistura a luminancia com a crominancia para mostrar as cores em termos de luminancia e crominancia
+ 
+ Depois da conversão da coordenada de cor
+ 
+ 1) Divide os 3 componentes da imagem em vários blocos de 8x8
+ 2) Cada bloco no range de 0-255
+ 3) Imagens são separadas em partes de diferentes frequencias usando DCT
+ 4) O passo de quantização discarta as frequencias menos importantes
+ 
+
+ARTIGO SOBRE DCT
+
+DCT compacta energia de imagem em pequenos números de coeficientes DCT de forma eficiente
+
+Artifacts -> são descontinuidades artificiais entre blocos de imagens adjacentes, podendo comprometer a imagem
+
+Usa deblocking algoritimos para corrigir isso
+
+
+
+
+PERGUNTAS:
+
+No 2.2 não devia ser [-4 8]T
+
+
+NO 2.3
+
+x=1
+y= 2u(t) - 1
+
+É ortogonal! Mas como um vetor que tem zero em toda uma parte dele é ortogonal ?
+
+x(t) é um escalar nem vetor é
+
+
+
+
+
+
+
