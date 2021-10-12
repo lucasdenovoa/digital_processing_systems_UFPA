@@ -18,34 +18,24 @@ def sum_impulse(array_of_impulses):
 
 def reflection_impulse(array_of_impulses):
     for x in array_of_impulses:
-        print("antes", x)
         for y in x:
             y = -y
 
 
-imp1 = impulse(-2,1)
-imp2 = impulse(-1,2)
-imp3 = impulse(0,3)
-imp4 = impulse(1,4)
-imp5 = impulse(2,5)
-imp6 = impulse(3,6)
 
 
+def main():
+    imp1 = impulse(0,1)
+    imp2 = impulse(1,2)
 
-todos = []
+    todos.append(imp1)
+    todos.append(imp2)
+    
+    plt.stem(t, sum_impulse(todos))
 
-todos.append(imp1)
-todos.append(imp2)
-todos.append(imp3)
-todos.append(imp4)
-todos.append(imp5)
-todos.append(imp6)
+    plt.show()
 
-
-reflection_impulse(todos)
-
-
-plt.stem(t, sum_impulse(todos))
-
-
-plt.show()
+    
+    
+if __name__ == "__main__":
+    main()
