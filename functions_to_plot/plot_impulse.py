@@ -1,11 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-t=np.arange(-10,11,1)
+number_of_sample=np.arange(-10,11,1)
 
 def impulse(shift, amplitude):
     delta = []
-    for i in t:
+    for i in number_of_sample:
         if i==shift:
             delta.append(amplitude*1)
         else:
@@ -21,17 +21,13 @@ def reflection_impulse(array_of_impulses):
         for y in x:
             y = -y
 
-
-
-
 def main():
-    imp1 = impulse(0,1)
-    imp2 = impulse(1,2)
+    impulse_set = []
 
-    todos.append(imp1)
-    todos.append(imp2)
+    impulse_set.append(impulse(0,1))
+    impulse_set.append(impulse(1,2))
     
-    plt.stem(t, sum_impulse(todos))
+    plt.stem(number_of_sample, sum_impulse(impulse_set))
 
     plt.show()
 
