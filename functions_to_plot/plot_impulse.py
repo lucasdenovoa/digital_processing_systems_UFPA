@@ -1,6 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+# If we have \delta[n-1] in the impulse function use shift like 1
+# If we have \delta[n+1] in the impulse function use shift like -1
+
 number_of_sample=np.arange(-10,11,1)
 
 def impulse(shift, amplitude):
